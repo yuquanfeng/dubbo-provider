@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nfsq.yqf.dubboprovider.mapper.FriendMapper" >
+    <resultMap id="BaseMap" type="bean.Friend">
+        <id column="ID" property="id" jdbcType="DECIMAL"/>
+        <result column="FRIEND_NAME" property="friendName" jdbcType="VARCHAR"/>
+        <result column="FRIEND_SEX" property="friendSex" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="FriendSql">
+        ID,FRIEND_NAME,FRIEND_SEX
+    </sql>
+    <select id="selectFriend" resultMap="BaseMap" parameterType="java.lang.String">
+        select <include refid="FriendSql"/>
+        from friend_t where FRIEND_NAME=#{friendName}
+    </select>
+</mapper>
